@@ -1,0 +1,16 @@
+---
+layout: post
+title: How to stub a method in "Mocha" which return more than one parameter.
+date: '2012-10-28T08:50:00.000-07:00'
+author: Akash Mishra
+tags:
+- Stubbing
+- Functional Programming
+- Ruby
+- Mocha
+modified_time: '2012-10-28T08:50:59.554-07:00'
+blogger_id: tag:blogger.com,1999:blog-5454104814334713963.post-6275396066338834532
+blogger_orig_url: http://sleepythread.blogspot.com/2012/10/how-to-stub-method-in-mocha-which.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on"><br />Let us assume following Class<br /><br />Class A<br />&nbsp; &nbsp; &nbsp; def hello(param)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # method implementation <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return return_value<br />&nbsp; &nbsp; &nbsp; end<br />end<br /><div></div><br />Using <a href="http://rubygems.org/gems/mocha">mocha</a>&nbsp;gem we stub a method in following way .<br /><br /><div style="text-align: center;"><i><b>A.stubs(:hello).with(param).returns(return_value)</b></i></div><br />Problem arises when we want to stub following method<br /><br />Class A<br />&nbsp; &nbsp; &nbsp; def hello(param)<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # method implementation<br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return return_value1, return_value2<br />&nbsp; &nbsp; &nbsp; end<br />end<br /><br /><div><br /></div><div>The above method has two return value. Following stubbing will not work for above method.</div><div><br /></div><div><b><i><span style="color: red;">A.stubs(:hello).with(param).returns(return_value1, return_value2)</span></i></b></div><div><br /></div><div>To stub the above method we can exploit the functional aspect of the Ruby. Ruby has a <b>lambda</b>&nbsp;construct by which we can define a lambda function and call it when required.</div><br />Stubbing the above method with the help of lambda function.<br /><br /><div style="text-align: center;"><b><i>values = lambda {return&nbsp;return_value1, return_value2}</i></b></div><div style="text-align: center;"><b><i>A.stubs(:hello).with(param).returns(values.call)</i></b></div><br /><br /></div>

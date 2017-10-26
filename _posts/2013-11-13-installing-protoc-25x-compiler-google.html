@@ -1,0 +1,17 @@
+---
+layout: post
+title: Installing protoc 2.5.x compiler [Google Protocol Buffers Compiler] on mac
+date: '2013-11-13T01:40:00.000-08:00'
+author: Akash Mishra
+tags:
+- source
+- protoc
+- install
+- homebrew
+- mac
+modified_time: '2013-11-13T01:40:21.978-08:00'
+blogger_id: tag:blogger.com,1999:blog-5454104814334713963.post-7925389983117097002
+blogger_orig_url: http://sleepythread.blogspot.com/2013/11/installing-protoc-25x-compiler-google.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on"><br /><b>Using Homebrew</b><br /><div style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp; brew install protobuf</div><div style="text-align: left;"><br /></div><div style="text-align: left;"><br /></div><div style="text-align: left;"><b>Building from source</b></div><div style="text-align: left;"><br /></div><ol style="text-align: left;"><li>Download latest version of procbuffer. [https://code.google.com/p/protobuf/downloads/list].</li><ul><li>e.g&nbsp; "wget https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2"</li></ul><li>Untar the tar.bz2 file</li><ul><li>tar xfvj protobuf-2.5.0.tar.bz2 </li></ul><li>Configure the protobuf. </li><ul><li>&nbsp;cd protobuf-2.5.0</li><li>./configure CC=clang CXX=clang++ CXXFLAGS='-std=c++11 -stdlib=libc++ -O3 -g' LDFLAGS='-stdlib=libc++' LIBS="-lc++ -lc++abi"</li></ul><li>Make the source&nbsp;</li><ul><li>make -j 4&nbsp;</li><li>sudo make install </li></ul></ol><br />If you have already installed protobuf using Homebrew then uninstall to avoid conflict. <span style="-webkit-text-stroke-width: 0px; background-color: white; color: black; display: inline !important; float: none; font-family: sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 19.1875px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px;"></span> </div>
